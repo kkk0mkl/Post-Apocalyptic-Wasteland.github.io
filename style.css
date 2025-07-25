@@ -207,6 +207,7 @@ body {
         max-width: 800px;
     }
 }
+/* 信号干扰动画 */
 @keyframes signal-interference {
     0% { filter: brightness(100%); }
     20% { filter: brightness(50%) contrast(200%); }
@@ -215,6 +216,16 @@ body {
     100% { filter: none; }
 }
 
-body:hover {
-    animation: signal-interference 0.3s infinite alternate;
+/* 桌面端：鼠标悬停时触发 */
+@media (hover: hover) {
+    body:hover {
+        animation: signal-interference 0.3s infinite alternate;
+    }
+}
+
+/* 移动端：触摸时触发 */
+@media (hover: none) {
+    body:active {
+        animation: signal-interference 0.3s infinite alternate;
+    }
 }
