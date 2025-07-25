@@ -12,18 +12,15 @@ body {
     margin: 0;
     font-size: 17px;
     -webkit-text-size-adjust: 100%;
-    overflow-x: hidden; /* 只禁用横向滚动 */
-    overflow-y: auto; /* 允许纵向滚动 */
 }
 
 .bbs-container {
     max-width: 100%;
     margin: 0 auto;
-    background-color: #444;
-    border: 1px solid #555;
+    background-color: #444444;
+    border: 1px solid #555555;
     padding: 15px;
     border-radius: 4px;
-     min-height: 100vh; /* 确保高度足够 */
 }
 
 /* 标题栏 */
@@ -180,9 +177,9 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(rgba(255,0,0,0.05)), 
-        linear-gradient(rgba(0,255,0,0.05)), 
-        linear-gradient(rgba(0,0,255,0.05));
+        linear-gradient（rgba(255,0,0,0.05), 
+        linear-gradient（rgba(0,255,0,0.05), 
+        linear-gradient（rgba(0,0,255,0.05);
     background-blend-mode: screen;
     z-index: 9999;
     display: none;
@@ -210,37 +207,8 @@ body {
         max-width: 800px;
     }
 }
-/* 信号干扰动画 */
-@keyframes signal-interference {
-    0% { filter: brightness(100%); }
-    20% { filter: brightness(50%) contrast(200%); }
-    40% { opacity: 0.8; }
-    60% { filter: hue-rotate(90deg); }
-    100% { filter: none; }
-}
 
-/* 桌面端：鼠标悬停时触发 */
-@media (hover: hover) {
-    body:hover {
-        animation: signal-interference 0.3s infinite alternate;
-    }
-}
 
-/* 移动端：触摸时触发 */
-@media (hover: none) {
-    body:active {
-        animation: signal-interference 0.3s infinite alternate;
-    }
-}
-@media (hover: none) {
-    body {
-        -webkit-overflow-scrolling: touch; /* iOS滚动优化 */
-    }
-    
-    .permission-denied {
-        touch-action: pan-y; /* 允许垂直滚动 */
-    }
-}
 /* 基础样式 */
 body {
     margin: 0;
