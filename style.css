@@ -1,132 +1,209 @@
-/* 全局复古风格 */
+/* 移动端优先的废土风格 */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #F5F5DC; /* 泛黄背景 */
-    font-family: "宋体", SimSun, serif;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
+    background-color: #222;
+    font-family: -apple-system, "PingFang SC", "微软雅黑", sans-serif;
+    color: #ddd;
+    line-height: 1.5;
+    padding: 10px;
+    margin: 0;
+    font-size: 17px;
+    -webkit-text-size-adjust: 100%;
 }
 
 .bbs-container {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    background-color: #FFF;
-    border: 1px solid #CCC;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 15px;
+    border-radius: 4px;
 }
 
 /* 标题栏 */
 .bbs-header {
-    border-bottom: 2px solid #3A6EA5; /* 贴吧经典蓝色 */
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .bbs-header h1 {
+    color: #eee;
     font-size: 18px;
-    margin: 0;
+    margin: 0 0 5px 0;
+    line-height: 1.6;
 }
 
 .post-meta {
     font-size: 12px;
-    color: #666;
-}
-
-.deleted-user {
-    color: #FF0000;
-    text-decoration: line-through;
-}
-
-.access-level {
-    font-style: italic;
     color: #999;
 }
 
-/* 主楼内容 */
-.post-content {
-    margin-bottom: 20px;
-}
-
+/* 文字样式 */
 .highlight-pink {
-    color: #FF00FF;
+    color: #ff6b9e;
     font-weight: bold;
 }
 
 .highlight-red {
-    color: #8B0000;
+    color: #ff4d4d;
 }
 
 .fake-link {
-    color: #0000FF;
+    color: #5d9bff;
     text-decoration: underline;
-    cursor: pointer;
 }
 
 .file-corrupted {
-    color: #777;
-}
-
-.glitch {
-    color: #FF0000;
-    animation: glitch-effect 1s infinite;
+    color: #888;
 }
 
 /* 回复区 */
 .reply-section {
-    border-top: 1px dashed #CCC;
-    padding-top: 15px;
+    border-top: 1px dashed #555;
+    padding-top: 12px;
 }
 
 .reply {
     margin-bottom: 15px;
-    padding-left: 10px;
-    border-left: 3px solid #EEE;
+    padding-left: 8px;
+    border-left: 2px solid #555;
 }
 
+/* 用户信息样式 */
 .reply-user {
-    font-weight: bold;
-    margin: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    position: relative;
 }
 
-.user-level {
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #666;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.user-info-card {
+    display: none;
+    position: absolute;
+    left: 44px;
+    background-color: #3a3a3a;
+    border: 1px solid #666;
+    padding: 8px;
+    width: 160px;
+    z-index: 100;
+    border-radius: 4px;
     font-size: 12px;
-    color: #3A6EA5;
-    margin-right: 5px;
 }
 
-.deleted {
-    color: #999;
-    text-decoration: line-through;
+.user-info-card p {
+    margin: 4px 0;
+    color: #ccc;
+}
+
+.user-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 11px;
+}
+
+.user-stats span {
+    background-color: #444;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* 系统消息 */
+.system-alert {
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #3a3a3a;
+    border-left: 3px solid #ff4d4d;
+    font-size: 12px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* 权限遮罩 */
+.permission-denied {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    color: #ff4d4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    z-index: 999;
+}
+
+/* 故障效果 */
+.glitch {
+    animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { text-shadow: none; }
+    25% { text-shadow: 1px 0 #ff6b9e; }
+    50% { text-shadow: -1px 0 #5d9bff; }
+    75% { opacity: 0.8; }
 }
 
 .glitch-text {
     font-family: monospace;
-    color: #FF00FF;
-    animation: glitch-effect 0.5s infinite;
+    color: #ff4d4d;
+    animation: glitch 0.8s infinite;
 }
 
-.deleted-notice {
-    font-size: 12px;
-    color: #999;
-    font-style: italic;
+/* 花屏效果 */
+.screen-glitch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient（rgba(255,0,0,0.05), 
+        linear-gradient（rgba(0,255,0,0.05), 
+        linear-gradient（rgba(0,0,255,0.05);
+    background-blend-mode: screen;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
 }
 
-/* 系统警告栏 */
-.system-alert {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #F0F0F0;
-    border-left: 4px solid #FF0000;
-    font-size: 12px;
-    color: #777;
+/* 平板设备适配 */
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+        font-size: 16px;
+    }
+    .bbs-container {
+        max-width: 700px;
+        padding: 20px;
+    }
+    .user-info-card {
+        width: 200px;
+    }
 }
 
-/* 故障特效 */
-@keyframes glitch-effect {
-    0% { text-shadow: 1px 0 #FF00FF; }
-    25% { text-shadow: -1px 0 #00FFFF; }
-    50% { transform: translateX(2px); }
-    75% { opacity: 0.8; }
-    100% { text-shadow: 0 0 #000; }
+/* 桌面设备适配 */
+@media (min-width: 992px) {
+    .bbs-container {
+        max-width: 800px;
+    }
 }
