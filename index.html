@@ -40,6 +40,7 @@
     </style>
 </head>
 <body>
+       <div class="snow-overlay"></div>
     <div class="bbs-container">
         <!-- 标题栏 -->
         <div class="bbs-header">
@@ -185,6 +186,15 @@
             }
         });
     </script>
-    <div class="snow-overlay"></div>
+ 
+    <script>
+document.body.classList.add('loading');
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.body.classList.remove('loading');
+        document.querySelector('.snow-overlay').classList.add('active');
+    }, 1500);
+});
+</script>
 </body>
 </html>
