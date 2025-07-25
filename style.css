@@ -207,5 +207,99 @@ body {
         max-width: 800px;
     }
 }
+/* 雪花噪点效果 */
+.snow-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
 
+.snow-overlay.active {
+    opacity: 0.7;
+}
+
+.snow-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0.5px, transparent 1px),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,0.1) 0.5px, transparent 1px),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.1) 0.5px, transparent 1px);
+    background-size: 200px 200px;
+    animation: snow-flicker 0.5s infinite alternate;
+}
+
+/* 雪花动画 */
+@keyframes snow-flicker {
+    0% {
+        opacity: 0.7;
+        background-position: 0 0, 50px 100px, 100px 50px;
+    }
+    20% {
+        opacity: 0.8;
+        background-position: 10px 20px, 60px 120px, 110px 70px;
+    }
+    40% {
+        opacity: 0.6;
+        background-position: 20px 40px, 70px 140px, 120px 90px;
+    }
+    60% {
+        opacity: 0.9;
+        background-position: 30px 60px, 80px 160px, 130px 110px;
+    }
+    80% {
+        opacity: 0.5;
+        background-position: 40px 80px, 90px 180px, 140px 130px;
+    }
+    100% {
+        opacity: 0.7;
+        background-position: 50px 100px, 100px 200px, 150px 150px;
+    }
+}
+
+/* 移动端专属效果 */
+@media (max-width: 767px) {
+    .snow-overlay {
+        display: block;
+    }
+    
+    /* 开屏时短暂显示雪花效果 */
+    body.loading::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        z-index: 9999;
+        animation: fade-out 1.5s forwards;
+    }
+    
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+            background: #111;
+        }
+        50% {
+            opacity: 0.8;
+            background: #222;
+        }
+        100% {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
 
