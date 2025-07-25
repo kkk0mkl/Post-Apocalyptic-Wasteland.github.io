@@ -207,3 +207,14 @@ body {
         max-width: 800px;
     }
 }
+@keyframes signal-interference {
+    0% { filter: brightness(100%); }
+    20% { filter: brightness(50%) contrast(200%); }
+    40% { opacity: 0.8; }
+    60% { filter: hue-rotate(90deg); }
+    100% { filter: none; }
+}
+
+body:hover {
+    animation: signal-interference 0.3s infinite alternate;
+}
