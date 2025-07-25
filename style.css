@@ -17,8 +17,8 @@ body {
 .bbs-container {
     max-width: 100%;
     margin: 0 auto;
-    background-color: #333;
-    border: 1px solid #444;
+    background-color: #444;
+    border: 1px solid #555;
     padding: 15px;
     border-radius: 4px;
 }
